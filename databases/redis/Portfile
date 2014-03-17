@@ -66,3 +66,6 @@ If you prefer to start a redis server manually, rather than using 'port load', t
 
     redis-server ${prefix}/etc/redis.conf
 "
+
+livecheck.url       http://download.redis.io/releases/
+livecheck.regex     ${name}-(\\d+.\\d+.\\d+)

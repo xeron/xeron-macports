@@ -27,8 +27,3 @@
  
  ################################# REPLICATION #################################
  
-@@ -714,4 +714,3 @@
- # in order to commit the file to the disk more incrementally and avoid
- # big latency spikes.
- aof-rewrite-incremental-fsync yes
--

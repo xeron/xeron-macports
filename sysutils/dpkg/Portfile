@@ -4,7 +4,7 @@
 PortSystem          1.0
 
 name                dpkg
-version             1.16.12
+version             1.17.6
 revision            1
 platforms           darwin freebsd
 categories          sysutils archivers
@@ -18,10 +18,10 @@ long_description    ${name} is the basis of the ${description}. \
 homepage            http://wiki.debian.org/Teams/Dpkg
 
 master_sites        debian:d/${name}/
-checksums           md5     b7e9cac52ff7882b088a3058b52081b5 \
-                    sha1    5969bb7f30ade840a56f512571ca5ab56d434af1 \
-                    rmd160  1912afd35b835901e661d2c0df563198de4e8420 \
-                    sha256  af96447758ecbfda51fc57d4b3bc3d208ad6393e71b91c9b52c6687697a208da
+checksums           md5     c87f2ae291d460015353e01d121bea85 \
+                    sha1    93d1d55fa82a9bcebfa4f7fdc50f1cb7d1d734e1 \
+                    rmd160  3a7690a3508c62bce7441f027b683535674f515f \
+                    sha256  96f5cddffbd7557574a90a4b90cb5387c4cd5334011b90b38fe67ebfdf9eb464
 
 use_xz              yes
 extract.asroot      yes
@@ -40,6 +40,7 @@ depends_lib-append  port:gettext \
                     port:libiconv \
                     port:perl5 \
                     port:coreutils \
+                    port:gzip \
                     port:bzip2 \
                     port:zlib \
                     port:ncurses \
@@ -48,6 +49,7 @@ depends_lib-append  port:gettext \
 
 depends_run-append  bin:gnutar:gnutar \
                     bin:lzma:xz \
+                    bin:gzip:gzip \
                     bin:perl:perl5 \
                     port:debianutils
 
@@ -107,7 +109,8 @@ patchfiles-append   patch-configure.ac.diff \
                     patch-lib_dpkg_tarfn.c.diff \
                     patch-src_remove.c.diff \
                     patch-src_archives.c.diff \
-                    patch-utils_start-stop-daemon.c.diff
+                    patch-utils_start-stop-daemon.c.diff \
+                    patch-scripts_Dpkg_Source_Archive.pm.diff
 
 post-patch {
     set scripts ${worksrcpath}/scripts
@@ -193,6 +196,5 @@ post-test {
 }
 
 # odd-numbered releases are unstable, so ignore them
-livecheck.type      none
 livecheck.url       http://ftp.debian.org/debian/pool/main/d/${name}/
 livecheck.regex     "${name}_(\\d+\\.\\d+(\\.\\d+)*)"

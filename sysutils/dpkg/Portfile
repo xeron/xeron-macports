@@ -5,7 +5,6 @@ PortSystem          1.0
 
 name                dpkg
 version             1.16.12
-revision            1
 platforms           darwin freebsd
 categories          sysutils archivers
 license             GPL-2+
@@ -28,37 +27,39 @@ extract.asroot      yes
 
 depends_build-append \
                     port:pkgconfig \
-                    path:share/aclocal/ax_check_gnu_make.m4:autoconf-archive \
-                    path:share/aclocal/xorg-macros.m4:xorg-util-macros \
+                    port:autoconf-archive \
+                    port:xorg-util-macros \
+                    port:gnutar \
+                    port:perl5.16 \
                     bin:git:git-core \
-                    bin:gnutar:gnutar \
-                    bin:lzma:xz \
-                    bin:perl:perl5
+                    bin:lzma:xz
 
 # Use MacPorts versions explicitly
 depends_lib-append  port:gettext \
                     port:libiconv \
-                    port:perl5 \
+                    port:perl5.16 \
+                    port:p5.16-timedate \
                     port:coreutils \
                     port:bzip2 \
+                    port:gzip \
                     port:zlib \
                     port:ncurses \
                     port:gnutar \
                     path:lib/pkgconfig/liblzma.pc:xz
 
-depends_run-append  bin:gnutar:gnutar \
+depends_run-append  port:gnutar \
+                    port:gzip \
                     bin:lzma:xz \
-                    bin:perl:perl5 \
+                    bin:perl5:perl5.16 \
                     port:debianutils
 
 # got to do some underscore-to-hyphen twiddling...
 distname            ${name}_${version}
 worksrcdir          ${name}-${version}
 
-configure.env-append \
-                    PERL=${prefix}/bin/perl5 \
-                    PKG_CONFIG=${prefix}/bin/pkg-config \
-                    TAR=${prefix}/bin/gnutar
+configure.perl      ${prefix}/bin/perl5.16
+configure.pkg_config ${prefix}/bin/pkg-config
+configure.env-append TAR=${prefix}/bin/gnutar
 configure.args-append \
                     --with-libintl-prefix=${prefix} \
                     --with-libiconv-prefix=${prefix} \
@@ -107,7 +108,10 @@ patchfiles-append   patch-configure.ac.diff \
                     patch-lib_dpkg_tarfn.c.diff \
                     patch-src_remove.c.diff \
                     patch-src_archives.c.diff \
-                    patch-utils_start-stop-daemon.c.diff
+                    patch-utils_start-stop-daemon.c.diff \
+                    patch-scripts_Dpkg_Source_Archive.pm.diff
+
+patch.args-append   --backup
 
 post-patch {
     set scripts ${worksrcpath}/scripts
@@ -144,20 +148,12 @@ platform freebsd {
     depends_build-append    bin:gmake:gmake
 }
 
-# This variant currently hangs while building and fails to actually
-# install the documentation, not entirely sure why...
-# Example error message:
-# dot[21000:907] CoreText CopyPropertiesForFont received mig IPC error (FFFFFFFFFFFFFECC) from font server
-# (issue with the graphviz port? see #40807 on trac)
+# This variant sometimes hangs while building...
 variant docs description {Build documentation (warning: building documentation takes a long time)} {
-    PortGroup               archcheck 1.0
     depends_build-append    port:doxygen \
                             path:bin/dot:graphviz \
-                            bin:mig:bootstrap_cmds \
-                            bin:lcov:lcov \
-                            port:fondu \
-                            port:fontconfig
-    depends_skip_archcheck-append bootstrap_cmds lcov fondu fontconfig
+                            port:fontconfig \
+                            port:freefont-ttf
     set docdir ${prefix}/share/doc/${name}
     configure.args-append   --docdir=${docdir} \
                             --htmldir=${docdir}/html \
@@ -167,9 +163,10 @@ variant docs description {Build documentation (warning: building documentation t
     build.target-append     doc
     pre-build {
         elevateToRoot "doxygen"
+        system -W ${worksrcpath}/doc "${prefix}/bin/doxygen -u"
     }
     post-build {
-        system -W ${worksrcpath}/doc "doxygen"
+        system -W ${worksrcpath}/doc "${prefix}/bin/doxygen"
         dropPrivileges
         set destroot_docdir ${destroot}${prefix}/share/doc/${name}
         xinstall -d ${destroot_docdir}
@@ -181,7 +178,7 @@ variant docs description {Build documentation (warning: building documentation t
     }
 }
 
-# Tests currently fail, this needs to be fixed eventually
+# Tests currently fail, this needs to be fixed eventually:
 test.run            yes
 test.target         check
 

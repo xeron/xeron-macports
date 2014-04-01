@@ -2,6 +2,7 @@
 # $Id: Portfile 105815 2013-05-06 14:52:20Z landonf@macports.org $
 
 PortSystem          1.0
+PortGroup           perl5 1.0
 
 name                dpkg
 version             1.16.12
@@ -30,15 +31,15 @@ depends_build-append \
                     port:autoconf-archive \
                     port:xorg-util-macros \
                     port:gnutar \
-                    port:perl5.16 \
+                    port:perl${perl5.major} \
                     bin:git:git-core \
                     bin:lzma:xz
 
 # Use MacPorts versions explicitly
 depends_lib-append  port:gettext \
                     port:libiconv \
-                    port:perl5.16 \
-                    port:p5.16-timedate \
+                    port:perl${perl5.major} \
+                    port:p${perl5.major}-timedate \
                     port:coreutils \
                     port:bzip2 \
                     port:gzip \
@@ -50,14 +51,14 @@ depends_lib-append  port:gettext \
 depends_run-append  port:gnutar \
                     port:gzip \
                     bin:lzma:xz \
-                    bin:perl5:perl5.16 \
+                    bin:perl5:perl${perl5.major} \
                     port:debianutils
 
 # got to do some underscore-to-hyphen twiddling...
 distname            ${name}_${version}
 worksrcdir          ${name}-${version}
 
-configure.perl      ${prefix}/bin/perl5.16
+configure.perl      ${prefix}/bin/perl5
 configure.pkg_config ${prefix}/bin/pkg-config
 configure.env-append TAR=${prefix}/bin/gnutar
 configure.args-append \

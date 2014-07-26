@@ -5,7 +5,7 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 name                dpkg
-version             1.16.14
+version             1.16.15
 platforms           darwin freebsd
 categories          sysutils archivers
 license             GPL-2+
@@ -18,10 +18,10 @@ long_description    ${name} is the basis of the ${description}. \
 homepage            http://wiki.debian.org/Teams/Dpkg
 
 master_sites        debian:d/${name}/
-checksums           md5     235f4368451a8e696fc7d92007ff9125 \
-                    sha1    9f469aaef4083d1dabb278ccd4b2783d64bc8824 \
-                    rmd160  74a9e1c392c843fcf7d2d694e5a19a2c36ecc8af \
-                    sha256  3cdaf40cfdaed20000e440a984c9237c780539e1131a5d8a9c11bacbda34473f
+checksums           md5     0e7d105a57839cdab2b0bf5e3612442f \
+                    sha1    c034f88c1ea9d8df7c5a84cc04bb7749e2b3617a \
+                    rmd160  fa7ebed1156cf501bd22ba3e4aab6e2a3a8439d5 \
+                    sha256  92bca9901ba2d9300be42f6de8dbea59b8367a918a2abeeb47d2176c9cf86b55
 
 use_xz              yes
 extract.asroot      yes

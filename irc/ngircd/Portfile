@@ -57,6 +57,10 @@ variant openssl conflicts gnutls description {Build with OpenSSL} {
     depends_lib-append      port:openssl
 }
 
+variant sniffer description {Build with sniffer} {
+    configure.args-append   --enable-sniffer
+}
+
 if {![variant_isset gnutls]} {
     default_variants        +openssl
 }

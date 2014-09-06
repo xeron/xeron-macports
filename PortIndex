@@ -1,5 +1,7 @@
 redis 352
 variants universal portdir databases/redis description {Redis is an open source, advanced key-value store.} homepage http://redis.io/ epoch 0 platforms darwin name redis long_description {{Redis is an open source, advanced key-value store.}} maintainers {gmail.com:brianjlandau openmaintainer} license BSD categories databases version 2.8.8 revision 0
+ngircd 519
+variants {gnutls openssl sniffer universal} portdir irc/ngircd description {next generation IRC daemon} homepage http://ngircd.barton.de/ epoch 0 platforms darwin depends_lib {port:libident port:tcp_wrappers port:zlib port:openssl} name ngircd long_description {ngIRCd is a free open source daemon for Internet Relay Chat (IRC). It's written from scratch and is not based upon the original IRCd like many others.} maintainers nomaintainer license GPL-2+ depends_extract bin:xz:xz categories irc version 21.1 revision 0
 bash-completion 417
 portdir sysutils/bash-completion description {Programmable bash completions} homepage http://bash-completion.alioth.debian.org/ depends_run port:bash epoch 1 platforms darwin name bash-completion long_description {Programmable completion library for bash. This port requires bash >=4.1 and is meant to be used together with the bash port.} license GPL-2+ maintainers raimue categories sysutils version 2.1 revision 9
 dpkg 933

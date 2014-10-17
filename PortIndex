@@ -1,5 +1,3 @@
-redis 352
-variants universal portdir databases/redis description {Redis is an open source, advanced key-value store.} homepage http://redis.io/ epoch 0 platforms darwin name redis long_description {{Redis is an open source, advanced key-value store.}} maintainers {gmail.com:brianjlandau openmaintainer} license BSD categories databases version 2.8.8 revision 0
 bash-completion 417
 portdir sysutils/bash-completion description {Programmable bash completions} homepage http://bash-completion.alioth.debian.org/ depends_run port:bash epoch 1 platforms darwin name bash-completion long_description {Programmable completion library for bash. This port requires bash >=4.1 and is meant to be used together with the bash port.} license GPL-2+ maintainers raimue categories sysutils version 2.1 revision 9
 dpkg 933

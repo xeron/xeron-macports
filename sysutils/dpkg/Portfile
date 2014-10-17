@@ -11,9 +11,7 @@ categories          sysutils archivers
 license             GPL-2+
 maintainers         gwmail.gwu.edu:egall openmaintainer
 description         Debian package maintenance system
-long_description    ${name} is the basis of the ${description}. \
-                    Installing this port allows the usage of the \
-                    \`port dpkg\` command.
+long_description    ${name} is the basis of the ${description}.
 
 homepage            http://wiki.debian.org/Teams/Dpkg
 
@@ -77,7 +75,7 @@ configure.args-append \
 # errors, so disabling it with a configure flag again (as done above)
 
 # ccache is trouble
-configure.ccache          no
+configure.ccache    no
 
 # Older versions of gcc choke with the -Wvla warning flag
 configure.cflags-delete   -Wvla
@@ -191,6 +189,6 @@ post-test {
 }
 
 # odd-numbered releases are unstable, so ignore them
-livecheck.type      none
+livecheck.type      regex
 livecheck.url       http://ftp.debian.org/debian/pool/main/d/${name}/
-livecheck.regex     "${name}_(\\d+\\.\\d+(\\.\\d+)*)"
+livecheck.regex     "${name}_(\\d+\\.\\d*\[02468\](\\.\\d+)*)"

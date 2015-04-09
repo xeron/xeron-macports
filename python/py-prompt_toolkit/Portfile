@@ -1,0 +1,33 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-prompt_toolkit
+version             0.26
+license             Permissive
+platforms           darwin
+supported_archs     noarch
+maintainers         gmail.com:xeron.oskom openmaintainer
+description         Library for building powerful interactive command lines in Python
+long_description    ${description}
+
+python.versions     27
+python.default_version 27
+
+homepage            https://pypi.python.org/pypi/prompt_toolkit/
+master_sites        https://pypi.python.org/packages/source/p/prompt_toolkit/
+distname            prompt_toolkit-${version}
+
+checksums           md5     f4c6578fb5178e53c64473af5ef2c05d \
+                    rmd160  fb4f521f648a589ae6cb24679cf1966d46bb9cdc \
+                    sha256  34e128db734d42be0dc712ce37430c5fafaee06438c2c29f42e072b6867fa9e5
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+    livecheck.type          none
+} else {
+    livecheck.type      regex
+    livecheck.url       ${homepage}
+    livecheck.regex     "prompt_toolkit (\\d+(?:\\.\\d+))"
+}

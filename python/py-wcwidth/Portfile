@@ -1,0 +1,33 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-wcwidth
+version             0.1.4
+license             Permissive
+platforms           darwin
+supported_archs     noarch
+maintainers         gmail.com:xeron.oskom openmaintainer
+description         Library for building powerful interactive command lines in Python
+long_description    ${description}
+
+python.versions     27
+python.default_version 27
+
+homepage            https://pypi.python.org/pypi/wcwidth/
+master_sites        https://pypi.python.org/packages/source/w/wcwidth/
+distname            wcwidth-${version}
+
+checksums           md5     4fb1d2481c5a849e57ad3fa7018ccbae \
+                    rmd160  9fe31063465c8efb253f091bc4ed5f9b6bda327f \
+                    sha256  906d3123045d77027b49fe912458e1a1e1d6ca1a51558a4bd9168d143b129d2b
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+    livecheck.type          none
+} else {
+    livecheck.type      regex
+    livecheck.url       ${homepage}
+    livecheck.regex     "wcwidth (\\d+\\.\\d+(?:\\.\\d+))"
+}

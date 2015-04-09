@@ -1,2 +1,12 @@
-bash-completion 0
-dpkg 437
+pgcli 0
+py-jedi 691
+py27-jedi 1215
+py34-jedi 1746
+py-prompt_toolkit 2277
+py27-prompt_toolkit 2779
+py-sqlparse 3280
+py27-sqlparse 3722
+py-wcwidth 4140
+py27-wcwidth 4601
+bash-completion 5075
+dpkg 5512

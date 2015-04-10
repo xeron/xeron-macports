@@ -13,7 +13,6 @@ description         Library for building powerful interactive command lines in P
 long_description    ${description}
 
 python.versions     27
-python.default_version 27
 
 homepage            https://pypi.python.org/pypi/wcwidth/
 master_sites        https://pypi.python.org/packages/source/w/wcwidth/

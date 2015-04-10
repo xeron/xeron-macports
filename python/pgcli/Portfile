@@ -7,7 +7,6 @@ PortGroup           github 1.0
 github.setup        amjith pgcli 0.16.3 v
 
 python.versions     27
-python.default_version 27
 
 categories-append   databases
 maintainers         gmail.com:xeron.oskom openmaintainer

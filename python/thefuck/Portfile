@@ -1,0 +1,27 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+PortGroup           github 1.0
+
+github.setup        nvbn thefuck 1.27
+
+python.versions     27
+
+categories-append   sysutils
+maintainers         gmail.com:xeron.oskom openmaintainer
+license             MIT
+platforms           darwin
+description         Magnificent app which corrects your previous console command
+long_description    ${description}
+
+homepage            https://github.com/nvbn/thefuck
+
+checksums           md5     f2338452ac419f35cee629fdcb9c8984 \
+                    rmd160  39bbe74477b55864dbc7758f84a433c9ac7e6175 \
+                    sha256  0a03dfd797f4e38a381f51f85a23756ae85a8409fbbc7dd5e6c624ec2213cc56
+
+depends_build       port:py${python.version}-setuptools
+depends_lib-append  port:py${python.version}-colorama \
+                    port:py${python.version}-psutil \
+                    port:py${python.version}-pathlib

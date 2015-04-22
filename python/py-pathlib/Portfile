@@ -1,0 +1,32 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-pathlib
+version             1.0.1
+license             MIT
+platforms           darwin
+supported_archs     noarch
+maintainers         gmail.com:xeron.oskom openmaintainer
+description         Object-oriented filesystem paths
+long_description    Pathlib offers a set of classes to handle filesystem paths.
+
+python.versions     27
+
+homepage            https://pypi.python.org/pypi/pathlib/
+master_sites        https://pypi.python.org/packages/source/p/pathlib/
+distname            pathlib-${version}
+
+checksums           md5     5099ed48be9b1ee29b31c82819240537 \
+                    rmd160  045915062c64c603ae4d6ac61d98c96e14bc4220 \
+                    sha256  6940718dfc3eff4258203ad5021090933e5c04707d5ca8cc9e73c94a7894ea9f
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+    livecheck.type          none
+} else {
+    livecheck.type      regex
+    livecheck.url       ${homepage}
+    livecheck.regex     "pathlib (\\d+\\.\\d+(?:\\.\\d+))"
+}

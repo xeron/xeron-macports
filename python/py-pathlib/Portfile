@@ -12,7 +12,7 @@ maintainers         gmail.com:xeron.oskom openmaintainer
 description         Object-oriented filesystem paths
 long_description    Pathlib offers a set of classes to handle filesystem paths.
 
-python.versions     27
+python.versions     27 34
 
 homepage            https://pypi.python.org/pypi/pathlib/
 master_sites        https://pypi.python.org/packages/source/p/pathlib/

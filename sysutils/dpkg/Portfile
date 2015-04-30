@@ -43,6 +43,7 @@ depends_lib-append  port:gettext \
                     port:zlib \
                     port:ncurses \
                     port:gnutar \
+                    port:md5sha1sum \
                     path:lib/pkgconfig/liblzma.pc:xz
 
 depends_run-append  port:gnutar \

@@ -5,7 +5,7 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 name                dpkg
-version             1.16.15
+version             1.17.25
 platforms           darwin freebsd
 categories          sysutils archivers
 license             GPL-2+
@@ -16,10 +16,9 @@ long_description    ${name} is the basis of the ${description}.
 homepage            http://wiki.debian.org/Teams/Dpkg
 
 master_sites        debian:d/${name}/
-checksums           md5     0e7d105a57839cdab2b0bf5e3612442f \
-                    sha1    c034f88c1ea9d8df7c5a84cc04bb7749e2b3617a \
-                    rmd160  fa7ebed1156cf501bd22ba3e4aab6e2a3a8439d5 \
-                    sha256  92bca9901ba2d9300be42f6de8dbea59b8367a918a2abeeb47d2176c9cf86b55
+checksums           md5     e48fcfdb2162e77d72c2a83432d537ca \
+                    rmd160  7f6dde14a0bf587927f80bc39ed6ab88acda7913 \
+                    sha256  07019d38ae98fb107c79dbb3690cfadff877f153b8c4970e3a30d2e59aa66baa
 
 use_xz              yes
 extract.asroot      yes
@@ -103,7 +102,6 @@ destroot.keepdirs-append \
                     ${destroot}${prefix}/etc/${name}
 
 patchfiles-append   patch-configure.ac.diff \
-                    patch-lib_dpkg_dpkg.h.diff \
                     patch-lib_dpkg_tarfn.c.diff \
                     patch-src_remove.c.diff \
                     patch-src_archives.c.diff \
@@ -191,4 +189,4 @@ post-test {
 # odd-numbered releases are unstable, so ignore them
 livecheck.type      regex
 livecheck.url       http://ftp.debian.org/debian/pool/main/d/${name}/
-livecheck.regex     "${name}_(\\d+\\.\\d*\[02468\](\\.\\d+)*)"
+livecheck.regex     "${name}_(\\d+\\.\\d+(\\.\\d+)*)"

@@ -1,20 +1,20 @@
---- scripts/Dpkg/Source/Archive.pm.orig	2013-09-30 18:47:57.000000000 +0400
-+++ scripts/Dpkg/Source/Archive.pm	2014-03-27 19:59:35.000000000 +0400
-@@ -47,7 +47,7 @@
-     $spawn_opts{"from_pipe"} = \*$self->{'tar_input'};
+--- scripts/Dpkg/Source/Archive.pm.orig	2015-04-09 14:40:47.000000000 -0700
++++ scripts/Dpkg/Source/Archive.pm	2015-04-30 03:12:46.000000000 -0700
+@@ -48,7 +48,7 @@
+     $spawn_opts{from_pipe} = \*$self->{tar_input};
      # Call tar creation process
-     $spawn_opts{"delete_env"} = [ "TAR_OPTIONS" ];
--    $spawn_opts{'exec'} = [ 'tar', '--null', '-T', '-', '--numeric-owner',
-+    $spawn_opts{'exec'} = [ 'gnutar', '--null', '-T', '-', '--numeric-owner',
-                             '--owner', '0', '--group', '0',
-                             @{$opts{"options"}}, '-cf', '-' ];
-     *$self->{"pid"} = spawn(%spawn_opts);
-@@ -122,7 +122,7 @@
+     $spawn_opts{delete_env} = [ 'TAR_OPTIONS' ];
+-    $spawn_opts{exec} = [ 'tar', '--null', '-T', '-', '--numeric-owner',
++    $spawn_opts{exec} = [ 'gnutar', '--null', '-T', '-', '--numeric-owner',
+                             '--owner', '0', '--group', '0', '--format=gnu',
+                             @{$opts{options}}, '-cf', '-' ];
+     *$self->{pid} = spawn(%spawn_opts);
+@@ -125,7 +125,7 @@
  
      # Call tar extraction process
-     $spawn_opts{"delete_env"} = [ "TAR_OPTIONS" ];
--    $spawn_opts{'exec'} = [ 'tar', '--no-same-owner', '--no-same-permissions',
-+    $spawn_opts{'exec'} = [ 'gnutar', '--no-same-owner', '--no-same-permissions',
-                             @{$opts{"options"}}, '-xf', '-' ];
+     $spawn_opts{delete_env} = [ 'TAR_OPTIONS' ];
+-    $spawn_opts{exec} = [ 'tar', '--no-same-owner', '--no-same-permissions',
++    $spawn_opts{exec} = [ 'gnutar', '--no-same-owner', '--no-same-permissions',
+                             @{$opts{options}}, '-xf', '-' ];
      spawn(%spawn_opts);
      $self->close();

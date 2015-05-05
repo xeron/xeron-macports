@@ -71,8 +71,7 @@ checksums-append \
 
 depends_build           bin:grep:grep \
                         bin:bison:bison
-depends_lib             port:gettext \
-                        port:readline
+depends_lib             port:gettext
 
 variant universal {}
 
@@ -80,6 +79,7 @@ configure.ldflags-append \
     "-Wl,-search_paths_first -lncurses"
 configure.args          --mandir=${prefix}/share/man \
                         --infodir=${prefix}/share/info \
+                        --without-installed-readline \
                         CFLAGS_FOR_BUILD="[get_canonical_archflags]"
 
 # Always source .bashrc when connecting remotely with ssh, #40603

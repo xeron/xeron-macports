@@ -5,8 +5,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-jedi
-version             0.8.1
-revision            1
+version             0.9.0
 platforms           darwin
 supported_archs     noarch
 license             GPL-2+
@@ -23,9 +22,9 @@ homepage            https://pypi.python.org/pypi/jedi/
 master_sites        https://pypi.python.org/packages/source/j/jedi/
 distname            jedi-${version}
 
-checksums           md5     0e4b205e05290b00ebabe19f351cddf7 \
-                    rmd160  27f2a6920d0e03382af87560fea1efa894968336 \
-                    sha256  4d23ae457cec14cedb71fb56f0ed51d75798f2fd74e91f6e5134b09a4a78eba8
+checksums           md5     2fee93d273622527ef8c97ac736e92bd \
+                    rmd160  5ee2bf56feb94f52f8502ae082a0f3584dc78dc2 \
+                    sha256  3b4c19fba31bdead9ab7350fb9fa7c914c59b0a807dcdd5c00a05feb85491d31
 
 if {${name} ne ${subport}} {
     depends_build-append    port:py${python.version}-setuptools

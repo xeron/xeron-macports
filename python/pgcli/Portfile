@@ -5,6 +5,7 @@ PortGroup           python 1.0
 PortGroup           github 1.0
 
 github.setup        dbcli pgcli 0.16.3 v
+revision            1
 
 python.versions     27
 
@@ -21,6 +22,8 @@ homepage            http://pgcli.com
 checksums           md5     019b59c1d02f2dfabb8763e4f53cb12e \
                     rmd160  c2b25f99e94786ada554b19bc17acf6fbb1fb59e \
                     sha256  669dfb31b1131f5b31cbc23715ccc2f46984ce024614d88bfdd899f10701ad0e
+
+patchfiles          patch-setup.py.diff
 
 depends_build       port:py${python.version}-setuptools
 depends_lib-append  port:py${python.version}-sqlparse \

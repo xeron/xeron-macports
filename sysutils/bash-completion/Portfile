@@ -1,4 +1,4 @@
-# $Id: Portfile 118693 2014-04-08 10:26:23Z raimue@macports.org $
+# $Id: Portfile 137375 2015-06-10 16:43:16Z raimue@macports.org $
 
 PortSystem      1.0
 
@@ -6,7 +6,7 @@ name            bash-completion
 conflicts       bash-completion-devel
 epoch           1
 version         2.1
-revision        9
+revision        10
 categories      sysutils
 platforms       darwin
 supported_archs noarch
@@ -32,7 +32,8 @@ patchfiles      patch-vpnc.diff \
                 patch-compat-dont-return.diff \
                 patch-words-bad-array-subscript.diff \
                 patch-fix-quote-readline-by-ref.diff \
-                patch-perldoc-pod.diff
+                patch-perldoc-pod.diff \
+                patch-remove-pkgutil.diff
 
 post-patch {
     reinplace "s:/etc/bash_completion:${prefix}/etc/bash_completion:g" \

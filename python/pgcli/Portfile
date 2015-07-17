@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        dbcli pgcli 0.17.0 v
+github.setup        dbcli pgcli 0.18.0 v
 
 python.versions     27
 
@@ -18,9 +18,9 @@ long_description    Pgli is a postgres client that does auto-completion \
 
 homepage            http://pgcli.com
 
-checksums           md5     2fe23198c994f5f6ba376f7b5d73c02f \
-                    rmd160  59e8c2f39961186a8fa7f2c2ba4bed12ce4d3395 \
-                    sha256  59a043645574d1cf44fbe818858d58458d89b07cfc04a8efa446adbb3a8208f4
+checksums           md5     6f7f1036a5580a79a2fb33e0afbfb373 \
+                    rmd160  471142426bf5d39c04eaf5d713a9d92b968a3450 \
+                    sha256  c2161ec8f18c1791adc2f9df83e63cda9f98f9891e3f2271e021fa0e32b7dfbb
 
 depends_build       port:py${python.version}-setuptools
 depends_lib-append  port:py${python.version}-sqlparse \
@@ -31,7 +31,8 @@ depends_lib-append  port:py${python.version}-sqlparse \
                     port:py${python.version}-click \
                     port:py${python.version}-wcwidth \
                     port:py${python.version}-six \
-                    port:py${python.version}-docopt
+                    port:py${python.version}-docopt \
+                    port:py${python.version}-configobj
 
 variant postgresql84 conflicts postgresql90 postgresql91 postgresql92 postgresql93 postgresql94 description "Build using postgresql v8.4" {
     depends_lib-append  port:postgresql84

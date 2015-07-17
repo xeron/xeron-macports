@@ -1,0 +1,36 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-configobj
+version             5.0.6
+license             MIT
+platforms           darwin
+supported_archs     noarch
+maintainers         gmail.com:xeron.oskom openmaintainer
+description         Config file reading, writing and validation.
+long_description    ConfigObj is a simple but powerful config file \
+                    reader and writer: an ini file round tripper. \
+                    Its main feature is that it is very easy to use, \
+                    with a straightforward programmer's interface and \
+                    a simple syntax for config files.
+
+python.versions     27 34
+
+homepage            https://pypi.python.org/pypi/configobj/
+master_sites        https://pypi.python.org/packages/source/c/configobj/
+distname            configobj-${version}
+
+checksums           md5     e472a3a1c2a67bb0ec9b5d54c13a47d6 \
+                    rmd160  9b7dd0b9e08477914da104585369921c549eec01 \
+                    sha256  a2f5650770e1c87fb335af19a9b7eb73fc05ccf22144eb68db7d00cd2bcb0902
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+    livecheck.type          none
+} else {
+    livecheck.type      regex
+    livecheck.url       ${homepage}
+    livecheck.regex     "configobj/(\\d+\\.\\d+(?:\\.\\d+))"
+}

@@ -5,10 +5,10 @@ PortGroup           python 1.0
 
 name                py-configobj
 version             5.0.6
-license             MIT
+license             BSD
 platforms           darwin
 supported_archs     noarch
-maintainers         gmail.com:xeron.oskom openmaintainer
+maintainers         nomaintainer
 description         Config file reading, writing and validation.
 long_description    ConfigObj is a simple but powerful config file \
                     reader and writer: an ini file round tripper. \
@@ -16,7 +16,7 @@ long_description    ConfigObj is a simple but powerful config file \
                     with a straightforward programmer's interface and \
                     a simple syntax for config files.
 
-python.versions     27 34
+python.versions     26 27 34
 
 homepage            https://pypi.python.org/pypi/configobj/
 master_sites        https://pypi.python.org/packages/source/c/configobj/

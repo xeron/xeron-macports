@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        dbcli pgcli 0.18.0 v
+github.setup        dbcli pgcli 0.19.1 v
 
 python.versions     27
 
@@ -18,9 +18,9 @@ long_description    Pgli is a postgres client that does auto-completion \
 
 homepage            http://pgcli.com
 
-checksums           md5     6f7f1036a5580a79a2fb33e0afbfb373 \
-                    rmd160  471142426bf5d39c04eaf5d713a9d92b968a3450 \
-                    sha256  c2161ec8f18c1791adc2f9df83e63cda9f98f9891e3f2271e021fa0e32b7dfbb
+checksums           md5     62ece1c325c2353931d41af5a8f1a34f \
+                    rmd160  1ad2a213ff25828e4464c913a63105fe40ef5143 \
+                    sha256  4a5d5635d973cfb529ad6fd67d7ff953e0bf734535fb3143c810c2fafc932625
 
 depends_build       port:py${python.version}-setuptools
 depends_lib-append  port:py${python.version}-sqlparse \

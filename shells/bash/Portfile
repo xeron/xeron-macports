@@ -4,7 +4,7 @@ PortSystem 1.0
 
 name                bash
 set bash_version    4.3
-set bash_patchlevel 39
+set bash_patchlevel 42
 revision            1
 version             ${bash_version}.${bash_patchlevel}
 distname            ${name}-${bash_version}
@@ -73,7 +73,10 @@ checksums-append \
     bash43-036 sha1 e9536d5f736ea23af0fc0618ddc2439fa6d4b9a0 \
     bash43-037 sha1 36e988e7770b280a0ca855a9b538002860976d29 \
     bash43-038 sha1 08055d5872c5e59e91a58f2924896fcfcc921602 \
-    bash43-039 sha1 45ac5c1cb035a74c6ff871a506437f1607c38e94
+    bash43-039 sha1 45ac5c1cb035a74c6ff871a506437f1607c38e94 \
+    bash43-040 sha256 84bb396b9262992ca5424feab6ed3ec39f193ef5c76dfe4a62b551bd8dd9d76b \
+    bash43-041 sha256 4ec432966e4198524a7e0cd685fe222e96043769c9613e66742ac475db132c1a \
+    bash43-042 sha256 b75a53141ab3d8fff3fa74b5f3dc76468b01eae299f50bbc2bc71ae395d690af
 
 depends_build           bin:grep:grep \
                         bin:bison:bison

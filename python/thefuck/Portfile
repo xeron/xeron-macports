@@ -24,4 +24,5 @@ checksums           md5     06000f11818686192ca0e1b3ae1da922 \
 depends_build       port:py${python.version}-setuptools
 depends_lib-append  port:py${python.version}-colorama \
                     port:py${python.version}-psutil \
-                    port:py${python.version}-pathlib
+                    port:py${python.version}-pathlib \
+                    port:py${python.version}-decorator

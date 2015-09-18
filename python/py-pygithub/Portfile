@@ -1,0 +1,32 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-pygithub
+version             1.25.2
+license             LGPL
+platforms           darwin
+supported_archs     noarch
+maintainers         gmail.com:xeron.oskom openmaintainer
+description         Python library implementing the GitHub API v3
+long_description    ${description}
+
+python.versions     27 34
+
+homepage            https://pypi.python.org/pypi/PyGithub/
+master_sites        https://pypi.python.org/packages/source/P/PyGithub/
+distname            PyGithub-${version}
+
+checksums           md5     18bb9d3fc1cebff8ab69eb57e85179a5 \
+                    rmd160  ddad08ac1da70d038f4f22a13b9af36c0d6ed1b5 \
+                    sha256  72aee507625e8ce6e3bef825e2ba543d0a2a20cb5ba5edfbe6436fc6eadfcef8
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+    livecheck.type          none
+} else {
+    livecheck.type      regex
+    livecheck.url       ${homepage}
+    livecheck.regex     "PyGithub (\\d+\\.\\d+(?:\\.\\d+))"
+}

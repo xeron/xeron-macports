@@ -24,6 +24,9 @@ checksums           md5     086d43d6e14bbfbbf0141d0144d5bf1c \
 
 if {${name} ne ${subport}} {
     depends_build-append    port:py${python.version}-setuptools
+    depends_lib-append      port:py${python.version}-wcwidth \
+                            port:py${python.version}-pygments \
+                            port:py${python.version}-six
     livecheck.type          none
 } else {
     livecheck.type      regex

@@ -1,0 +1,47 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+PortGroup           github 1.0
+
+github.setup        dbcli mycli 1.4.0 v
+
+python.versions     27
+
+categories-append   python
+maintainers         gmail.com:xeron.oskom openmaintainer
+license             BSD
+platforms           darwin
+description         A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting
+long_description    ${description}
+
+homepage            http://mycli.net
+
+checksums           md5     5a1e5bd418e945e4df438ede0f9cbccb \
+                    rmd160  748fc358714bab6e78ff4f88fe97f261d4e2f6e0 \
+                    sha256  c225cb535aa662f6c6dd49ba049bb25bde7c5d0df520ea05ccac3c8c126376be
+
+depends_build       port:py${python.version}-setuptools
+depends_lib-append  port:py${python.version}-sqlparse \
+                    port:py${python.version}-pymysql \
+                    port:py${python.version}-prompt_toolkit \
+                    port:py${python.version}-pygments \
+                    port:py${python.version}-click \
+                    port:py${python.version}-configobj \
+                    port:py${python.version}-crypto
+
+variant mysql51 conflicts mysql55 mysql56 description "Build using mysql v8.4" {
+    depends_lib-append  port:mysql51
+}
+
+variant mysql55 conflicts mysql51 mysql56 description "Build using mysql v9.0" {
+    depends_lib-append  port:mysql55
+}
+
+variant mysql56 conflicts mysql51 mysql55 description "Build using mysql v9.1" {
+    depends_lib-append  port:mysql56
+}
+
+if {![variant_isset mysql51] && ![variant_isset mysql55]} {
+    default_variants    +mysql56
+}

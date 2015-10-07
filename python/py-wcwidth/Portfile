@@ -5,7 +5,7 @@ PortGroup           python 1.0
 
 name                py-wcwidth
 version             0.1.4
-license             Permissive
+license             MIT
 platforms           darwin
 supported_archs     noarch
 maintainers         gmail.com:xeron.oskom openmaintainer

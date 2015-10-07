@@ -42,6 +42,6 @@ variant mysql56 conflicts mysql51 mysql55 description "Build using mysql v5.6" {
     depends_lib-append  port:mysql56
 }
 
-if {![variant_isset mysql51] && ![variant_isset mysql55]} {
+if {![variant_isset mysql51] && ![variant_isset mysql55] && ![variant_isset mysql56]} {
     default_variants    +mysql56
 }

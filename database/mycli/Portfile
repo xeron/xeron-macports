@@ -30,15 +30,15 @@ depends_lib-append  port:py${python.version}-sqlparse \
                     port:py${python.version}-configobj \
                     port:py${python.version}-crypto
 
-variant mysql51 conflicts mysql55 mysql56 description "Build using mysql v8.4" {
+variant mysql51 conflicts mysql55 mysql56 description "Build using mysql v5.1" {
     depends_lib-append  port:mysql51
 }
 
-variant mysql55 conflicts mysql51 mysql56 description "Build using mysql v9.0" {
+variant mysql55 conflicts mysql51 mysql56 description "Build using mysql v5.5" {
     depends_lib-append  port:mysql55
 }
 
-variant mysql56 conflicts mysql51 mysql55 description "Build using mysql v9.1" {
+variant mysql56 conflicts mysql51 mysql55 description "Build using mysql v5.6" {
     depends_lib-append  port:mysql56
 }
 

@@ -8,13 +8,12 @@ github.setup        dbcli pgcli 0.19.2 v
 
 python.versions     27
 
-categories-append   databases
+categories-append   python
 maintainers         gmail.com:xeron.oskom openmaintainer
-license             Permissive
+license             BSD
 platforms           darwin
-description         A REPL for Postgres
-long_description    Pgli is a postgres client that does auto-completion \
-                    and syntax highlighting.
+description         Postgres CLI with autocompletion and syntax highlighting
+long_description    ${description}
 
 homepage            http://pgcli.com
 
@@ -26,12 +25,8 @@ depends_build       port:py${python.version}-setuptools
 depends_lib-append  port:py${python.version}-sqlparse \
                     port:py${python.version}-psycopg2 \
                     port:py${python.version}-prompt_toolkit \
-                    port:py${python.version}-jedi \
                     port:py${python.version}-pygments \
                     port:py${python.version}-click \
-                    port:py${python.version}-wcwidth \
-                    port:py${python.version}-six \
-                    port:py${python.version}-docopt \
                     port:py${python.version}-configobj
 
 variant postgresql84 conflicts postgresql90 postgresql91 postgresql92 postgresql93 postgresql94 description "Build using postgresql v8.4" {

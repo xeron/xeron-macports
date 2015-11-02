@@ -5,7 +5,7 @@ PortGroup           python 1.0
 
 name                py-pgspecial
 version             1.2.0
-license             MIT
+license             BSD
 platforms           darwin
 supported_archs     noarch
 maintainers         gmail.com:xeron.oskom openmaintainer

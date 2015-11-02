@@ -1,0 +1,33 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-pgspecial
+version             1.2.0
+license             MIT
+platforms           darwin
+supported_archs     noarch
+maintainers         gmail.com:xeron.oskom openmaintainer
+description         Meta-commands handler for Postgres Database
+long_description    This package provides an API to execute meta-commands \
+                    (AKA “special”, or “backslash commands”) on PostgreSQL.
+
+python.versions     27 34
+
+homepage            https://pypi.python.org/pypi/pgspecial/
+master_sites        https://pypi.python.org/packages/source/p/pgspecial/
+distname            pgspecial-${version}
+
+checksums           md5     2267f0dfb6fbcd169547cd2e58d64ca2 \
+                    rmd160  4cd5dddcfab9c90ad55f1298474c493aebc87681 \
+                    sha256  36ae9126f50fd146c96609b71a34ffa9122cfb72e658f46114c4cb8642530b17
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+    livecheck.type          none
+} else {
+    livecheck.type      regex
+    livecheck.url       ${homepage}
+    livecheck.regex     "pgspecial (\\d+\\.\\d+(?:\\.\\d+))"
+}

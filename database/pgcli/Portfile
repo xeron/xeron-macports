@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        dbcli pgcli 0.19.2 v
+github.setup        dbcli pgcli 0.20.0 v
 
 python.versions     27
 
@@ -17,17 +17,19 @@ long_description    ${description}
 
 homepage            http://pgcli.com
 
-checksums           md5     4a95e4ae75b6b817a91e34057f4a3684 \
-                    rmd160  14649e19e6f43d02ac16652d4cf55465952f7641 \
-                    sha256  ed4bceaf77d875b22054197d1ee120ffb940b5b21ca9d12b001f730d8e758029
+checksums           md5     e29af9b828d1620b32b8a192ebc60f94 \
+                    rmd160  0cbed9248a046b6de5939b56c2019373bf0fe95c \
+                    sha256  efcfcec95495a2dad8c00633fca48817c833a04d9687802705c0eb650d540dd4
 
 depends_build       port:py${python.version}-setuptools
-depends_lib-append  port:py${python.version}-sqlparse \
-                    port:py${python.version}-psycopg2 \
-                    port:py${python.version}-prompt_toolkit \
-                    port:py${python.version}-pygments \
+depends_lib-append  port:py${python.version}-pgspecial \
                     port:py${python.version}-click \
-                    port:py${python.version}-configobj
+                    port:py${python.version}-pygments \
+                    port:py${python.version}-prompt_toolkit \
+                    port:py${python.version}-psycopg2 \
+                    port:py${python.version}-sqlparse \
+                    port:py${python.version}-configobj \
+                    port:py${python.version}-setproctitle
 
 variant postgresql84 conflicts postgresql90 postgresql91 postgresql92 postgresql93 postgresql94 description "Build using postgresql v8.4" {
     depends_lib-append  port:postgresql84

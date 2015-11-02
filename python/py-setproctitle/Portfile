@@ -1,0 +1,33 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-setproctitle
+version             1.1.9
+license             MIT
+platforms           darwin
+supported_archs     noarch
+maintainers         gmail.com:xeron.oskom openmaintainer
+description         A Python module to customize the process title
+long_description    The setproctitle module allows a process to change \
+                    its title (as displayed by system tools such as ps and top).
+
+python.versions     27 34
+
+homepage            https://pypi.python.org/pypi/setproctitle/
+master_sites        https://pypi.python.org/packages/source/s/setproctitle/
+distname            setproctitle-${version}
+
+checksums           md5     95d9e56c69437246460a20804961d70d \
+                    rmd160  16c4945159b9b08f1429da0a897af4c91e1ebbf6 \
+                    sha256  1c3414d18f9cacdab78b0ffd8e886d56ad45f22e55001a72aaa0b2aeb56a0ad7
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+    livecheck.type          none
+} else {
+    livecheck.type      regex
+    livecheck.url       ${homepage}
+    livecheck.regex     "setproctitle (\\d+\\.\\d+(?:\\.\\d+))"
+}

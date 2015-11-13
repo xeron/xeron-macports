@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        dbcli mycli 1.4.0 v
+github.setup        dbcli mycli 1.5.0 v
 
 python.versions     27
 
@@ -17,18 +17,18 @@ long_description    ${description}
 
 homepage            http://mycli.net
 
-checksums           md5     5a1e5bd418e945e4df438ede0f9cbccb \
-                    rmd160  748fc358714bab6e78ff4f88fe97f261d4e2f6e0 \
-                    sha256  c225cb535aa662f6c6dd49ba049bb25bde7c5d0df520ea05ccac3c8c126376be
+checksums           md5     d384a1204c505df221883a5c5c25b1c6 \
+                    rmd160  a2cd7f72b6dd51f4e34265f36a315402ff5cee2d \
+                    sha256  61167a0de120828ad3e2ba2571b8f386810873c36cd53fd1a465aeffff887912
 
 depends_build       port:py${python.version}-setuptools
-depends_lib-append  port:py${python.version}-sqlparse \
-                    port:py${python.version}-pymysql \
-                    port:py${python.version}-prompt_toolkit \
+depends_lib-append  port:py${python.version}-click \
+                    port:py${python.version}-crypto \
                     port:py${python.version}-pygments \
-                    port:py${python.version}-click \
-                    port:py${python.version}-configobj \
-                    port:py${python.version}-crypto
+                    port:py${python.version}-prompt_toolkit \
+                    port:py${python.version}-pymysql \
+                    port:py${python.version}-sqlparse \
+                    port:py${python.version}-configobj
 
 variant mysql51 conflicts mysql55 mysql56 description "Build using mysql v5.1" {
     depends_lib-append  port:mysql51

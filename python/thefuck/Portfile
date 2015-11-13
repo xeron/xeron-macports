@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        nvbn thefuck 3.0
+github.setup        nvbn thefuck 3.2
 
 python.versions     27
 
@@ -17,12 +17,13 @@ long_description    ${description}
 
 homepage            https://github.com/nvbn/thefuck
 
-checksums           md5     06000f11818686192ca0e1b3ae1da922 \
-                    rmd160  c570e334d7349b0d728be6d3ec3aa4c0195e5200 \
-                    sha256  b0049d99e635e9addcb601798f21ccb34c8088f1cbfe536667897ab79a682178
+checksums           md5     d464b3fb48f60839f506effca71a9745 \
+                    rmd160  3243b31810a3167674eca427990ec91ad80f4f37 \
+                    sha256  a8e4c8edc2456348770a2e5bec078c21f523dcdb5584c1360856d23c14d8a243
 
 depends_build       port:py${python.version}-setuptools
-depends_lib-append  port:py${python.version}-colorama \
-                    port:py${python.version}-psutil \
-                    port:py${python.version}-pathlib \
-                    port:py${python.version}-decorator
+depends_lib-append  port:py${python.version}-psutil \
+                    port:py${python.version}-colorama \
+                    port:py${python.version}-six \
+                    port:py${python.version}-decorator \
+                    port:py${python.version}-pathlib

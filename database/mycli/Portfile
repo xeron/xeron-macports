@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        dbcli mycli 1.5.0 v
+github.setup        dbcli mycli 1.5.2 v
 
 python.versions     27
 
@@ -17,9 +17,9 @@ long_description    ${description}
 
 homepage            http://mycli.net
 
-checksums           md5     d384a1204c505df221883a5c5c25b1c6 \
-                    rmd160  a2cd7f72b6dd51f4e34265f36a315402ff5cee2d \
-                    sha256  61167a0de120828ad3e2ba2571b8f386810873c36cd53fd1a465aeffff887912
+checksums           md5     b694f0fd2229be2926bf75a956dc0c20 \
+                    rmd160  583482867ea7e1b11fb71e25670629ceccdbabbc \
+                    sha256  11c1d8f3d48134760a1df7f67a495f0eaaf288e4449eb532a9164836eb932fb3
 
 depends_build       port:py${python.version}-setuptools
 depends_lib-append  port:py${python.version}-click \

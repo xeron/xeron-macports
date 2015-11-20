@@ -1,10 +1,11 @@
---- src/remove.c.orig	2015-04-09 14:40:47.000000000 -0700
-+++ src/remove.c	2015-04-30 02:54:24.000000000 -0700
-@@ -344,7 +344,18 @@
+--- src/remove.c.orig	2015-11-19 21:16:11.000000000 -0800
++++ src/remove.c	2015-11-19 21:16:22.000000000 -0800
+@@ -345,8 +345,18 @@
          push_leftover(&leftover,namenode);
          continue;
        }
--      if (errno != ENOTDIR) ohshite(_("cannot remove `%.250s'"),fnvb.buf);
+-      if (errno != ENOTDIR)
+-        ohshite(_("cannot remove '%.250s'"), fnvb.buf);
 +      if (errno != ENOTDIR) {
 +        /* XXX Hack:
 +         * dpkg includes /. in the packing list.
@@ -15,16 +16,18 @@
 +        if (errno == EINVAL && strcmp(fnvb.buf, "/.") == 0)
 +          continue;
 +        else
-+          ohshite(_("cannot remove `%.250s'"),fnvb.buf);
++          ohshite(_("cannot remove '%.250s'"), fnvb.buf);
 +      }
        debug(dbg_eachfiledetail, "removal_bulk unlinking '%s'", fnvb.buf);
        if (secure_unlink(fnvb.buf))
          ohshite(_("unable to securely remove '%.250s'"), fnvb.buf);
-@@ -437,7 +448,18 @@
+@@ -439,9 +449,18 @@
        push_leftover(&leftover,namenode);
        continue;
      }
--    if (errno != ENOTDIR) ohshite(_("cannot remove `%.250s'"),fnvb.buf);
+-    if (errno != ENOTDIR)
+-      ohshite(_("cannot remove '%.250s'"), fnvb.buf);
+-
 +    if (errno != ENOTDIR) {
 +      /* XXX Hack:
 +       * dpkg includes /. in the packing list.
@@ -35,8 +38,8 @@
 +      if (errno == EINVAL && strcmp(fnvb.buf, "/.") == 0)
 +        continue;
 +      else
-+        ohshite(_("cannot remove `%.250s'"),fnvb.buf);
++        ohshite(_("cannot remove '%.250s'"), fnvb.buf);
 +    }
- 
      if (lstat(fnvb.buf, &stab) == 0 && S_ISLNK(stab.st_mode)) {
        debug(dbg_eachfiledetail, "removal_bulk is a symlink to a directory");
+ 

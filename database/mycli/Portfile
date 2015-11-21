@@ -17,8 +17,7 @@ long_description    ${description}
 
 homepage            http://mycli.net
 
-checksums           md5     b694f0fd2229be2926bf75a956dc0c20 \
-                    rmd160  583482867ea7e1b11fb71e25670629ceccdbabbc \
+checksums           rmd160  583482867ea7e1b11fb71e25670629ceccdbabbc \
                     sha256  11c1d8f3d48134760a1df7f67a495f0eaaf288e4449eb532a9164836eb932fb3
 
 depends_build       port:py${python.version}-setuptools
@@ -29,19 +28,3 @@ depends_lib-append  port:py${python.version}-click \
                     port:py${python.version}-pymysql \
                     port:py${python.version}-sqlparse \
                     port:py${python.version}-configobj
-
-variant mysql51 conflicts mysql55 mysql56 description "Build using mysql v5.1" {
-    depends_lib-append  port:mysql51
-}
-
-variant mysql55 conflicts mysql51 mysql56 description "Build using mysql v5.5" {
-    depends_lib-append  port:mysql55
-}
-
-variant mysql56 conflicts mysql51 mysql55 description "Build using mysql v5.6" {
-    depends_lib-append  port:mysql56
-}
-
-if {![variant_isset mysql51] && ![variant_isset mysql55] && ![variant_isset mysql56]} {
-    default_variants    +mysql56
-}

@@ -18,8 +18,7 @@ homepage            https://pypi.python.org/pypi/prompt_toolkit/
 master_sites        https://pypi.python.org/packages/source/p/prompt_toolkit/
 distname            prompt_toolkit-${version}
 
-checksums           md5     086d43d6e14bbfbbf0141d0144d5bf1c \
-                    rmd160  1725181cd428125e693d348ea8a2daca2e0cf6db \
+checksums           rmd160  1725181cd428125e693d348ea8a2daca2e0cf6db \
                     sha256  1aa25cb9772e1e27d12f7920b5a514421ab763231067119bbd2f8b1574b409fb
 
 if {${name} ne ${subport}} {

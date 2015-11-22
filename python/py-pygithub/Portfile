@@ -18,8 +18,7 @@ homepage            https://pypi.python.org/pypi/PyGithub/
 master_sites        https://pypi.python.org/packages/source/P/PyGithub/
 distname            PyGithub-${version}
 
-checksums           md5     5a9961b4331d63cbbcae3850abcf888a \
-                    rmd160  27f99ee2fd29bf83956fcc499ac56016abf9db49 \
+checksums           rmd160  27f99ee2fd29bf83956fcc499ac56016abf9db49 \
                     sha256  59d0ceafd1c4fb73117aa35f515988b691a386046714f278521ba01d260ddefb
 
 if {${name} ne ${subport}} {

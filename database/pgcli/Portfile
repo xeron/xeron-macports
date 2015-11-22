@@ -8,7 +8,7 @@ github.setup        dbcli pgcli 0.20.1 v
 
 python.versions     27
 
-categories-prepend  databases
+categories          databases python
 maintainers         gmail.com:xeron.oskom openmaintainer
 license             BSD
 platforms           darwin
@@ -17,8 +17,7 @@ long_description    ${description}
 
 homepage            http://pgcli.com
 
-checksums           md5     0ac271541f3f897f33ef92dda74d3e2d \
-                    rmd160  de1ab75cb3e998a6a06b9f7bc35c0210d5755bc1 \
+checksums           rmd160  de1ab75cb3e998a6a06b9f7bc35c0210d5755bc1 \
                     sha256  56edf3f5e422a2e8d8863f1833c11ddb21e08486716d2cc98402f0a29513e124
 
 depends_build       port:py${python.version}-setuptools

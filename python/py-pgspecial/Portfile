@@ -19,8 +19,7 @@ homepage            https://pypi.python.org/pypi/pgspecial/
 master_sites        https://pypi.python.org/packages/source/p/pgspecial/
 distname            pgspecial-${version}
 
-checksums           md5     2267f0dfb6fbcd169547cd2e58d64ca2 \
-                    rmd160  4cd5dddcfab9c90ad55f1298474c493aebc87681 \
+checksums           rmd160  4cd5dddcfab9c90ad55f1298474c493aebc87681 \
                     sha256  36ae9126f50fd146c96609b71a34ffa9122cfb72e658f46114c4cb8642530b17
 
 if {${name} ne ${subport}} {

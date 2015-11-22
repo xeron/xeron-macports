@@ -17,8 +17,7 @@ long_description    ${description}
 
 homepage            https://github.com/nvbn/thefuck
 
-checksums           md5     d464b3fb48f60839f506effca71a9745 \
-                    rmd160  3243b31810a3167674eca427990ec91ad80f4f37 \
+checksums           rmd160  3243b31810a3167674eca427990ec91ad80f4f37 \
                     sha256  a8e4c8edc2456348770a2e5bec078c21f523dcdb5584c1360856d23c14d8a243
 
 depends_build       port:py${python.version}-setuptools

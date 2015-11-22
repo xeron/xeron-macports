@@ -18,8 +18,7 @@ homepage            https://pypi.python.org/pypi/wcwidth/
 master_sites        https://pypi.python.org/packages/source/w/wcwidth/
 distname            wcwidth-${version}
 
-checksums           md5     2282d853074f2f1f465a3387e524d99b \
-                    rmd160  e9e7f0172ed8881fd50ed20a012d6274ef9b791c \
+checksums           rmd160  e9e7f0172ed8881fd50ed20a012d6274ef9b791c \
                     sha256  66c7ce3199c87833aaaa1fe1241b63261ce53c1062597c189a16a54713e0919d
 
 if {${name} ne ${subport}} {

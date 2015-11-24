@@ -14,17 +14,19 @@ description         Debian package maintenance system
 long_description    ${name} is the basis of the ${description}.
 
 homepage            http://wiki.debian.org/Teams/Dpkg
-
 master_sites        debian:d/${name}/
-checksums           md5     a5ca138121cc37c8fb0083462a3b4d47 \
-                    rmd160  baffcdf3bb72ad535d6aacbcee88202488e4612a \
-                    sha256  a40ffe38d7f36d858a752189a306433cfc52c7d15d7b98f61d9f9dd49e0e4807
+distname            ${name}_${version}
+worksrcdir          ${name}-${version}
 
 use_xz              yes
 extract.asroot      yes
 
+checksums           rmd160  baffcdf3bb72ad535d6aacbcee88202488e4612a \
+                    sha256  a40ffe38d7f36d858a752189a306433cfc52c7d15d7b98f61d9f9dd49e0e4807
+
 depends_build-append \
                     port:pkgconfig \
+                    port:flex \
                     port:gnutar \
                     port:perl${perl5.major} \
                     bin:lzma:xz
@@ -33,14 +35,12 @@ depends_build-append \
 depends_lib-append  port:gettext \
                     port:libiconv \
                     port:perl${perl5.major} \
-                    port:p${perl5.major}-timedate \
                     port:coreutils \
                     port:bzip2 \
                     port:gzip \
                     port:zlib \
                     port:ncurses \
                     port:gnutar \
-                    port:md5sha1sum \
                     path:lib/pkgconfig/liblzma.pc:xz
 
 depends_run-append  port:gnutar \
@@ -48,10 +48,6 @@ depends_run-append  port:gnutar \
                     port:debianutils \
                     bin:perl5:perl${perl5.major} \
                     bin:lzma:xz
-
-# got to do some underscore-to-hyphen twiddling...
-distname            ${name}_${version}
-worksrcdir          ${name}-${version}
 
 configure.perl      ${prefix}/bin/perl5
 configure.pkg_config ${prefix}/bin/pkg-config
@@ -81,9 +77,7 @@ destroot.keepdirs-append \
                     ${destroot}${prefix}/var/log \
                     ${destroot}${prefix}/etc/${name}
 
-patchfiles-append   patch-src_remove.c.diff \
-                    patch-src_archives.c.diff \
-                    patch-scripts_Dpkg_Source_Archive.pm.diff
+patchfiles-append   patch-scripts_Dpkg_Source_Archive.pm.diff
 
 use_autoreconf      yes
 autoreconf.args     -fvi --warnings=all
@@ -100,7 +94,7 @@ post-destroot {
 }
 
 # This variant sometimes hangs while building...
-variant docs description {Build documentation (warning: building documentation takes a long time)} {
+variant docs description "Build documentation (warning: building documentation takes a long time)" {
     depends_build-append    port:doxygen \
                             path:bin/dot:graphviz \
                             port:fontconfig \

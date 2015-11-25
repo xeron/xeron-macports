@@ -5,7 +5,7 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 name                dpkg
-version             1.17.25
+version             1.18.3
 platforms           darwin
 categories          sysutils archivers
 license             GPL-2+
@@ -14,47 +14,40 @@ description         Debian package maintenance system
 long_description    ${name} is the basis of the ${description}.
 
 homepage            http://wiki.debian.org/Teams/Dpkg
-
 master_sites        debian:d/${name}/
-checksums           md5     e48fcfdb2162e77d72c2a83432d537ca \
-                    rmd160  7f6dde14a0bf587927f80bc39ed6ab88acda7913 \
-                    sha256  07019d38ae98fb107c79dbb3690cfadff877f153b8c4970e3a30d2e59aa66baa
+distname            ${name}_${version}
+worksrcdir          ${name}-${version}
 
 use_xz              yes
 extract.asroot      yes
 
+checksums           rmd160  baffcdf3bb72ad535d6aacbcee88202488e4612a \
+                    sha256  a40ffe38d7f36d858a752189a306433cfc52c7d15d7b98f61d9f9dd49e0e4807
+
 depends_build-append \
                     port:pkgconfig \
-                    port:autoconf-archive \
-                    port:xorg-util-macros \
+                    port:flex \
                     port:gnutar \
                     port:perl${perl5.major} \
-                    bin:git:git-core \
                     bin:lzma:xz
 
 # Use MacPorts versions explicitly
 depends_lib-append  port:gettext \
                     port:libiconv \
                     port:perl${perl5.major} \
-                    port:p${perl5.major}-timedate \
                     port:coreutils \
                     port:bzip2 \
                     port:gzip \
                     port:zlib \
                     port:ncurses \
                     port:gnutar \
-                    port:md5sha1sum \
                     path:lib/pkgconfig/liblzma.pc:xz
 
 depends_run-append  port:gnutar \
                     port:gzip \
-                    bin:lzma:xz \
+                    port:debianutils \
                     bin:perl5:perl${perl5.major} \
-                    port:debianutils
-
-# got to do some underscore-to-hyphen twiddling...
-distname            ${name}_${version}
-worksrcdir          ${name}-${version}
+                    bin:lzma:xz
 
 configure.perl      ${prefix}/bin/perl5
 configure.pkg_config ${prefix}/bin/pkg-config
@@ -72,9 +65,6 @@ configure.args-append \
                     --disable-silent-rules \
                     --disable-start-stop-daemon
 
-# ccache is trouble
-configure.ccache    no
-
 compiler.blacklist-append cc gcc-3.3 gcc-4.0 apple-gcc-4.0
 
 build.type          gnu
@@ -87,20 +77,7 @@ destroot.keepdirs-append \
                     ${destroot}${prefix}/var/log \
                     ${destroot}${prefix}/etc/${name}
 
-patchfiles-append   patch-configure.ac.diff \
-                    patch-src_remove.c.diff \
-                    patch-src_archives.c.diff \
-                    patch-utils_start-stop-daemon.c.diff \
-                    patch-scripts_Dpkg_Source_Archive.pm.diff
-
-patch.args-append   --backup
-
-post-patch {
-    set scripts ${worksrcpath}/scripts
-    file copy ${prefix}/share/aclocal/ax_check_gnu_make.m4 ${worksrcpath}/m4
-    file copy ${prefix}/share/aclocal/xorg-macros.m4 ${worksrcpath}/m4
-    system -W ${worksrcpath} "git init"
-}
+patchfiles-append   patch-scripts_Dpkg_Source_Archive.pm.diff
 
 use_autoreconf      yes
 autoreconf.args     -fvi --warnings=all
@@ -117,7 +94,7 @@ post-destroot {
 }
 
 # This variant sometimes hangs while building...
-variant docs description {Build documentation (warning: building documentation takes a long time)} {
+variant docs description "Build documentation (warning: building documentation takes a long time)" {
     depends_build-append    port:doxygen \
                             path:bin/dot:graphviz \
                             port:fontconfig \

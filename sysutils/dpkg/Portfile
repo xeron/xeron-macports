@@ -5,11 +5,11 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 name                dpkg
-version             1.18.3
+version             1.18.4
 platforms           darwin
 categories          sysutils archivers
 license             GPL-2+
-maintainers         gwmail.gwu.edu:egall openmaintainer
+maintainers         gwmail.gwu.edu:egall gmail.com:xeron.oskom openmaintainer
 description         Debian package maintenance system
 long_description    ${name} is the basis of the ${description}.
 
@@ -21,37 +21,34 @@ worksrcdir          ${name}-${version}
 use_xz              yes
 extract.asroot      yes
 
-checksums           rmd160  baffcdf3bb72ad535d6aacbcee88202488e4612a \
-                    sha256  a40ffe38d7f36d858a752189a306433cfc52c7d15d7b98f61d9f9dd49e0e4807
+checksums           rmd160  9e1dd4ab4f720118dd424a509390d8a2feab452e \
+                    sha256  fe89243868888ce715bf45861f26264f767d4e4dbd0d6f1a26ce60bbbbf106da
+
+perl5.branches      5.22
 
 depends_build-append \
                     port:pkgconfig \
-                    port:flex \
-                    port:gnutar \
-                    port:perl${perl5.major} \
-                    bin:lzma:xz
+                    port:flex
 
 # Use MacPorts versions explicitly
-depends_lib-append  port:gettext \
-                    port:libiconv \
-                    port:perl${perl5.major} \
+depends_lib-append  port:bzip2 \
                     port:coreutils \
-                    port:bzip2 \
-                    port:gzip \
-                    port:zlib \
-                    port:ncurses \
+                    port:gettext \
                     port:gnutar \
-                    path:lib/pkgconfig/liblzma.pc:xz
-
-depends_run-append  port:gnutar \
                     port:gzip \
-                    port:debianutils \
-                    bin:perl5:perl${perl5.major} \
-                    bin:lzma:xz
+                    port:libiconv \
+                    port:ncurses \
+                    port:perl${perl5.major} \
+                    port:xz \
+                    port:zlib
 
-configure.perl      ${prefix}/bin/perl5
-configure.pkg_config ${prefix}/bin/pkg-config
-configure.env-append TAR=${prefix}/bin/gnutar
+depends_run-append  port:debianutils
+
+configure.perl      ${perl5.bin}
+configure.pkg_config \
+                    ${prefix}/bin/pkg-config
+configure.env-append \
+                    TAR=${prefix}/bin/gnutar
 configure.args-append \
                     --with-libintl-prefix=${prefix} \
                     --with-libiconv-prefix=${prefix} \
@@ -69,7 +66,7 @@ compiler.blacklist-append cc gcc-3.3 gcc-4.0 apple-gcc-4.0
 
 build.type          gnu
 
-set vardpkg ${destroot}${prefix}/var/db/${name}
+set vardpkg         ${destroot}${prefix}/var/db/${name}
 destroot.keepdirs-append \
                     ${vardpkg} \
                     ${vardpkg}/updates \
@@ -99,17 +96,21 @@ variant docs description "Build documentation (warning: building documentation t
                             path:bin/dot:graphviz \
                             port:fontconfig \
                             port:freefont-ttf
-    set docdir ${prefix}/share/doc/${name}
+
+    set docdir              ${prefix}/share/doc/${name}
     configure.args-append   --docdir=${docdir} \
                             --htmldir=${docdir}/html \
                             --dvidir=${docdir}/dvi \
                             --pdfdir=${docdir}/pdf \
                             --psdir=${docdir}/ps
+
     build.target-append     doc
+
     pre-build {
         elevateToRoot "doxygen"
         system -W ${worksrcpath}/doc "${prefix}/bin/doxygen -u"
     }
+
     post-build {
         system -W ${worksrcpath}/doc "${prefix}/bin/doxygen"
         dropPrivileges
@@ -127,12 +128,12 @@ variant docs description "Build documentation (warning: building documentation t
 test.run            yes
 test.target         check
 
-pre-test {
-    elevateToRoot "test"
-}
-post-test {
-    dropPrivileges
-}
+#pre-test {
+#    elevateToRoot "test"
+#}
+#post-test {
+#    dropPrivileges
+#}
 
 livecheck.type      regex
 livecheck.url       http://ftp.debian.org/debian/pool/main/d/${name}/

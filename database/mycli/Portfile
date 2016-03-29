@@ -4,9 +4,9 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        dbcli mycli 1.5.2 v
+github.setup        dbcli mycli 1.7.1 v
 
-python.versions     27
+python.versions     27 34 35
 
 categories          databases python
 maintainers         gmail.com:xeron.oskom openmaintainer
@@ -17,8 +17,8 @@ long_description    ${description}
 
 homepage            http://mycli.net
 
-checksums           rmd160  583482867ea7e1b11fb71e25670629ceccdbabbc \
-                    sha256  11c1d8f3d48134760a1df7f67a495f0eaaf288e4449eb532a9164836eb932fb3
+checksums           rmd160  daecddf8bad9934fff42e44bdeeee9dbe2169c82 \
+                    sha256  cf37e514d1e2f831dc72f8a0c7f4f9aa5357e17ec2854711c5e6c1b78ceadebb
 
 depends_build       port:py${python.version}-setuptools
 depends_lib-append  port:py${python.version}-click \

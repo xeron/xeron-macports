@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        dbcli pgcli 0.20.1 v
+github.setup        dbcli pgcli 1.0.0 v
 
 python.versions     27
 
@@ -17,8 +17,8 @@ long_description    ${description}
 
 homepage            http://pgcli.com
 
-checksums           rmd160  de1ab75cb3e998a6a06b9f7bc35c0210d5755bc1 \
-                    sha256  56edf3f5e422a2e8d8863f1833c11ddb21e08486716d2cc98402f0a29513e124
+checksums           rmd160  32f519076f600b5d015df2277000a2a55628b67e \
+                    sha256  45ede62b5f986301ddb9dd07233d65b5530b1d6dbaf99de3a2acfec7b053b1f6
 
 depends_build       port:py${python.version}-setuptools
 depends_lib-append  port:py${python.version}-pgspecial \

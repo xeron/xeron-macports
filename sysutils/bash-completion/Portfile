@@ -1,12 +1,12 @@
-# $Id: Portfile 137375 2015-06-10 16:43:16Z raimue@macports.org $
+# $Id$
 
 PortSystem      1.0
+PortGroup       github 1.0
 
-name            bash-completion
+github.setup    scop bash-completion 2.3
+epoch           2
+
 conflicts       bash-completion-devel
-epoch           1
-version         2.1
-revision        10
 categories      sysutils
 platforms       darwin
 supported_archs noarch
@@ -17,23 +17,19 @@ long_description \
     Programmable completion library for bash. This port requires bash >=4.1 and \
     is meant to be used together with the bash port.
 
-homepage        http://bash-completion.alioth.debian.org/
-master_sites    http://bash-completion.alioth.debian.org/files/
-checksums       md5     4e2a9f11a4042a38ee79ddcd048e8b9e \
-                rmd160  5e019214ee2c7788ef7d80179e30594047b23a37 \
-                sha256  2b606804a7d5f823380a882e0f7b6c8a37b0e768e72c3d4107c51fbe8a46ae4f
-use_bzip2 yes
+homepage        https://github.com/scop/bash-completion
+
+checksums       rmd160  42491a6210af0a67bea246c22724a8edbfe830cc \
+                sha256  eaf238d12187364affb2f70fd127060a4fd889900054fe30e2abf69ed5e48cb9
 
 depends_run     port:bash
 
 patchfiles      patch-vpnc.diff \
-                patch-make.diff \
-                patch-_known_hosts_real.diff \
-                patch-compat-dont-return.diff \
-                patch-words-bad-array-subscript.diff \
                 patch-fix-quote-readline-by-ref.diff \
                 patch-perldoc-pod.diff \
                 patch-remove-pkgutil.diff
+
+use_autoreconf  yes
 
 post-patch {
     reinplace "s:/etc/bash_completion:${prefix}/etc/bash_completion:g" \
@@ -72,7 +68,3 @@ if {${os.platform} eq "darwin" && ${os.subplatform} eq "macosx"} {
         will be available.
     "
 }
-
-livecheck.type      regex
-livecheck.url       ${homepage}
-livecheck.regex     "${name}-(\\d+(?:\\.\\d+)*)${extract.suffix}"

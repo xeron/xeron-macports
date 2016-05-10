@@ -6,7 +6,6 @@ PortGroup       github 1.0
 github.setup    scop bash-completion 2.3
 epoch           2
 
-conflicts       bash-completion-devel
 categories      sysutils
 platforms       darwin
 supported_archs noarch

@@ -28,7 +28,8 @@ depends_lib-append  port:py${python.version}-pgspecial \
                     port:py${python.version}-psycopg2 \
                     port:py${python.version}-sqlparse \
                     port:py${python.version}-configobj \
-                    port:py${python.version}-setproctitle
+                    port:py${python.version}-setproctitle \
+                    port:py${python.version}-humanize
 
 variant postgresql84 conflicts postgresql90 postgresql91 postgresql92 postgresql93 postgresql94 postgresql95 description "Build using postgresql v8.4" {
     depends_lib-append  port:postgresql84

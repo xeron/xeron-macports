@@ -12,20 +12,18 @@ maintainers         gmail.com:xeron.oskom openmaintainer
 description         Python library implementing the GitHub API v3
 long_description    ${description}
 
-python.versions     27 34
+python.versions     27 34 35
 
-homepage            https://pypi.python.org/pypi/PyGithub/
-master_sites        https://pypi.python.org/packages/source/P/PyGithub/
+homepage            https://pypi.python.org/pypi/${python.rootname}/
+master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}
 distname            PyGithub-${version}
 
 checksums           rmd160  27f99ee2fd29bf83956fcc499ac56016abf9db49 \
                     sha256  59d0ceafd1c4fb73117aa35f515988b691a386046714f278521ba01d260ddefb
 
 if {${name} ne ${subport}} {
-    depends_build-append    port:py${python.version}-setuptools
-    livecheck.type          none
+    depends_build-append  port:py${python.version}-setuptools
+    livecheck.type  none
 } else {
-    livecheck.type      regex
-    livecheck.url       ${homepage}
-    livecheck.regex     "PyGithub (\\d+\\.\\d+(?:\\.\\d+))"
+    livecheck.type  pypi
 }

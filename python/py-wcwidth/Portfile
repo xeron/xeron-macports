@@ -14,18 +14,16 @@ long_description    ${description}
 
 python.versions     27 34 35
 
-homepage            https://pypi.python.org/pypi/wcwidth/
-master_sites        https://pypi.python.org/packages/source/w/wcwidth/
-distname            wcwidth-${version}
+homepage            https://pypi.python.org/pypi/${python.rootname}/
+master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}
+distname            ${python.rootname}-${version}
 
 checksums           rmd160  2eb04bc765265d110e8e57d52879c46ce0627e85 \
                     sha256  dcb3ec4771066cc15cf6aab5d5c4a499a5f01c677ff5aeb46cf20500dccd920b
 
 if {${name} ne ${subport}} {
-    depends_build-append    port:py${python.version}-setuptools
-    livecheck.type          none
+    depends_build-append  port:py${python.version}-setuptools
+    livecheck.type  none
 } else {
-    livecheck.type      regex
-    livecheck.url       ${homepage}
-    livecheck.regex     "wcwidth (\\d+\\.\\d+(?:\\.\\d+))"
+    livecheck.type  pypi
 }

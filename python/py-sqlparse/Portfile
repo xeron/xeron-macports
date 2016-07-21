@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-sqlparse
-version             0.1.19
+version             0.2.1
 license             BSD
 platforms           darwin
 supported_archs     noarch
@@ -21,8 +21,8 @@ homepage            https://pypi.python.org/pypi/${python.rootname}/
 master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}
 distname            ${python.rootname}-${version}
 
-checksums           rmd160  cebc888c1226efc5c9deda6e2dc16475daad1b94 \
-                    sha256  d896be1a1c7f24bffe08d7a64e6f0176b260e281c5f3685afe7826f8bada4ee8
+checksums           rmd160  2b74f2e72e7d009869d7fb3269d5a5d5146b453a \
+                    sha256  1c98a2bdffe67f1bb817b72a7ba4d38be592e0f07c5acea4adebcec12c4377d1
 
 if {${name} ne ${subport}} {
     depends_build-append  port:py${python.version}-setuptools

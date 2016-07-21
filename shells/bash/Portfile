@@ -3,7 +3,7 @@
 PortSystem 1.0
 
 name                bash
-set bash_version    4.4-rc1
+set bash_version    4.4-beta2
 set bash_patchlevel 0
 version             ${bash_version}.${bash_patchlevel}
 distname            ${name}-${bash_version}
@@ -24,8 +24,8 @@ homepage            http://www.gnu.org/software/bash/bash.html
 master_sites        gnu
 patch_sites         gnu:${name}/${distname}-patches
 checksums           ${distname}${extract.suffix} \
-                    rmd160  16cf2b1f6705a04e19079482792af662e5b5779e \
-                    sha256  54838ce0e9db6a8920d4c9f6563fd74dac45d3d3c14c8df4cf7ceb68a91e244b
+                    rmd160  30fdb93d467ae47b66a98bfffafdf69f765ec0c4 \
+                    sha256  3a8c4aa40f9ba6c311f4f6a637ae290c0148b828617b0a263a416ba923111f51
 
 # Generate patchfiles
 for {set i 1} {$i <= $bash_patchlevel} {incr i} {

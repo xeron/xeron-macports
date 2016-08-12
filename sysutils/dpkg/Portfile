@@ -5,7 +5,7 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 name                dpkg
-version             1.18.9
+version             1.18.10
 platforms           darwin
 categories          sysutils archivers
 license             GPL-2+
@@ -21,8 +21,8 @@ worksrcdir          ${name}-${version}
 use_xz              yes
 extract.asroot      yes
 
-checksums           rmd160  ad9d69467e2be5714f1c58c7ba2f57ba9566a1c4 \
-                    sha256  86ac4af917e9e75eb9b6c947a0a11439d1de32f72237413f7ddab17f77082093
+checksums           rmd160  807a8d4bc3ec547dff82b9495618220208870196 \
+                    sha256  025524da41ba18b183ff11e388eb8686f7cc58ee835ed7d48bd159c46a8b6dc5
 
 perl5.branches      5.22
 

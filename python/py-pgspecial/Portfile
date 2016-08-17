@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-pgspecial
-version             1.5.0
+version             1.6.0
 license             BSD
 platforms           darwin
 supported_archs     noarch
@@ -19,8 +19,8 @@ homepage            https://pypi.python.org/pypi/${python.rootname}/
 master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}
 distname            ${python.rootname}-${version}
 
-checksums           rmd160  ae77188871523e87593dafda6918e7bbd42b2b8b \
-                    sha256  cd4c4a0655be80f15eadc116a576f16c7147338e27f3f2fe8cc3fa6519a77891
+checksums           rmd160  dbe6184aea6ebbacc51a862d3e75123218e151f5 \
+                    sha256  55685887bf218e055cb6a17870d83a29e27650951a2362d2710651f62e553426
 
 if {${name} ne ${subport}} {
     depends_build-append  port:py${python.version}-setuptools

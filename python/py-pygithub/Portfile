@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-pygithub
-version             1.26.0
+version             1.27.1
 license             LGPL
 platforms           darwin
 supported_archs     noarch

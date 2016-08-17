@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-prompt_toolkit
-version             1.0.5
+version             1.0.6
 license             Permissive
 platforms           darwin
 supported_archs     noarch
@@ -18,8 +18,8 @@ homepage            https://pypi.python.org/pypi/${python.rootname}/
 master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}
 distname            ${python.rootname}-${version}
 
-checksums           rmd160  831f629d545ca98892b37afebdc8590a91da2230 \
-                    sha256  b726807349e8158a70773cf6ac2a90f0c62849dd02a339aac910ba1cd882f313
+checksums           rmd160  7fe4cfb94a2bdde2109b62e6001f2ddea4a0e76f \
+                    sha256  fa8f0c3668afbc85abbb4601ebc8db1db9d5009c8a833feea107fc63f1e7ef22
 
 if {${name} ne ${subport}} {
     depends_build-append  port:py${python.version}-setuptools

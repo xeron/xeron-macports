@@ -40,7 +40,7 @@ test.target         check
 
 post-destroot {
     xinstall -v -m 755 -d ${destroot}${prefix}/share/doc/${name}
-    xinstall -v -W -m 644 ${worksrcpath} ABOUT-NLS AUTHORS COPYING ChangeLog \
+    xinstall -v -m 644 -W ${worksrcpath} ABOUT-NLS AUTHORS COPYING ChangeLog \
         ChangeLog.1 INSTALL NEWS README THANKS TODO \
         ${destroot}${prefix}/share/doc/${name}
     foreach f [glob ${destroot}${prefix}/share/info/tar.info*] {

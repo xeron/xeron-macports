@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-pymysql
-version             0.7.6
+version             0.7.9
 license             MIT
 platforms           darwin
 supported_archs     noarch
@@ -18,8 +18,8 @@ homepage            https://pypi.python.org/pypi/${python.rootname}/
 master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}
 distname            PyMySQL-${version}
 
-checksums           rmd160  59ae4719a56e0d3b03ab5f31e4963cdbaf535538 \
-                    sha256  ad1115f1366c14a107f7b45c4a5f19b534f9ee85c188dfcd585fc08d2c966b30
+checksums           rmd160  b93a86549ac54b2dd6069512beb8c1da37ec449a \
+                    sha256  2331f82b7b85d407c8d9d7a8d7901a6abbeb420533e5d5d64ded5009b5c6dcc3
 
 if {${name} ne ${subport}} {
     depends_build-append  port:py${python.version}-setuptools

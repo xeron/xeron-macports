@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-pygithub
-version             1.27.1
+version             1.28
 license             LGPL
 platforms           darwin
 supported_archs     noarch
@@ -18,8 +18,8 @@ homepage            https://pypi.python.org/pypi/${python.rootname}/
 master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}
 distname            PyGithub-${version}
 
-checksums           rmd160  27f99ee2fd29bf83956fcc499ac56016abf9db49 \
-                    sha256  59d0ceafd1c4fb73117aa35f515988b691a386046714f278521ba01d260ddefb
+checksums           rmd160  5d5954c657d0f605581265b0e79b15aed105cfc8 \
+                    sha256  508a3f309c7c41f8d1b8e6b9f6f72958dc80da032f1b4cec95190a60cc921505
 
 if {${name} ne ${subport}} {
     depends_build-append  port:py${python.version}-setuptools

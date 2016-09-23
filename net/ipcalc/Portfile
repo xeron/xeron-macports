@@ -9,7 +9,7 @@ revision            1
 categories          net
 license             GPL-2+
 platforms           darwin
-maintainers         nomaintainer
+maintainers         gmail.com:xeron.oskom openmaintainer
 
 description         calculates various network masks etc. from given ip-address
 long_description    ipcalc takes an IP address and netmask and calculates the \

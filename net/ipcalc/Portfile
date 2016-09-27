@@ -9,6 +9,7 @@ revision            1
 categories          net
 license             GPL-2+
 platforms           darwin
+supported_archs     noarch
 maintainers         gmail.com:xeron.oskom openmaintainer
 
 description         calculates various network masks etc. from given ip-address

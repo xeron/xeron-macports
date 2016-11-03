@@ -55,8 +55,6 @@ configure.args-append \
                     --with-admindir=${prefix}/var/db/${name} \
                     --with-logdir=${prefix}/var/log \
                     --mandir=${prefix}/share/man \
-                    --with-zlib \
-                    --with-bz2 \
                     --with-liblzma \
                     --disable-linker-optimisations \
                     --disable-silent-rules \

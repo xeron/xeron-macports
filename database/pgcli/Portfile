@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        dbcli pgcli 1.3.1 v
+github.setup        dbcli pgcli 1.4.0 v
 
 categories          databases python
 maintainers         gmail.com:xeron.oskom openmaintainer
@@ -16,20 +16,8 @@ long_description    ${description}
 
 homepage            http://pgcli.com
 
-checksums           rmd160  8a104551f6935d5942e2c10d9c40b1093e0a7dbb \
-                    sha256  5176f9f9742ffdc6f3639dcf409a8f0e3f1bceab8f52bdb9e16d1d82a6c50a7f
-
-depends_build       port:py${python.version}-setuptools
-depends_lib-append  port:py${python.version}-pgspecial \
-                    port:py${python.version}-click \
-                    port:py${python.version}-pygments \
-                    port:py${python.version}-prompt_toolkit \
-                    port:py${python.version}-psycopg2 \
-                    port:py${python.version}-sqlparse \
-                    port:py${python.version}-configobj \
-                    port:py${python.version}-setproctitle \
-                    port:py${python.version}-humanize \
-                    port:py${python.version}-wcwidth
+checksums           rmd160  5cc1a97757aa65684451fcd827aacc8b6995d08a \
+                    sha256  b2ac8b87ac1e4002e8877ee3415d62c3bbe5557dba4e321666b6269fd0108f31
 
 variant python27 conflicts python34 python35 python36 description "Use Python 2.7" {}
 variant python34 conflicts python27 python35 python36 description "Use Python 3.4" {}
@@ -103,3 +91,15 @@ if {
 } {
     default_variants    +postgresql96
 }
+
+depends_build       port:py${python.version}-setuptools
+depends_lib-append  port:py${python.version}-pgspecial \
+                    port:py${python.version}-click \
+                    port:py${python.version}-pygments \
+                    port:py${python.version}-prompt_toolkit \
+                    port:py${python.version}-psycopg2 \
+                    port:py${python.version}-sqlparse \
+                    port:py${python.version}-configobj \
+                    port:py${python.version}-setproctitle \
+                    port:py${python.version}-humanize \
+                    port:py${python.version}-wcwidth

@@ -1,26 +1,45 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
 PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        nvbn thefuck 3.11
-
-python.versions     27
+github.setup        nvbn thefuck 3.25
 
 categories-append   sysutils
 maintainers         gmail.com:xeron.oskom openmaintainer
 license             MIT
 platforms           darwin
+supported_archs     noarch
 description         Magnificent app which corrects your previous console command
 long_description    ${description}
 
 homepage            https://github.com/nvbn/thefuck
 
-checksums           rmd160  b5638f427737c9a8f70de2473642fb55401a5aa6 \
-                    sha256  90b63853c26670e37ed1a30842ec34814434bf2435f2e3a397329c67110a3099
+checksums           rmd160  fcfa41ee6ff42803a8360ada489e43f6e227ed9e \
+                    sha256  26a182894342e716bef721f7b11d12836d627877fdb0bd11ff83691ff3a3800f
+
+
+variant python27 conflicts python34 python35 python36 description "Use Python 2.7" {}
+variant python34 conflicts python27 python35 python36 description "Use Python 3.4" {}
+variant python35 conflicts python27 python34 python36 description "Use Python 3.5" {}
+variant python36 conflicts python27 python34 python35 description "Use Python 3.6" {}
+
+if {[variant_isset python34]} {
+    python.default_version 34
+} elseif {[variant_isset python35]} {
+    python.default_version 35
+} elseif {[variant_isset python36]} {
+    python.default_version 36
+} else {
+    default_variants +python27
+    python.default_version 27
+}
 
 depends_build       port:py${python.version}-setuptools
 depends_lib-append  port:py${python.version}-psutil \
                     port:py${python.version}-colorama \
                     port:py${python.version}-six \
                     port:py${python.version}-decorator \
-                    port:py${python.version}-pathlib2
+                    port:py${python.version}-pathlib2 \
+                    port:py${python.version}-pyte
